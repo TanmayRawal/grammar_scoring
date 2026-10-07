@@ -1,0 +1,39 @@
+order,file,kind,public_lb,description
+1,run1.csv,model,0.3958,"audio-only stack (4 frozen speech encoders, ridge/SVR, NNLS)"
+2,run2_nosmooth.csv,model,0.38,"+ transcripts, text features, Qwen3 states; stack on crop OOF"
+3,run2_smooth.csv,model,0.3752,run 2 + test-speaker smoothing
+4,run3_B.csv,model,0.3895,"+ population weights/calibration, adapters (regressed)"
+5,run3_C.csv,model,0.3786,run 3 + speaker prior (cosine >= 0.93)
+6,run3_A.csv,model,0.4025,"run 3 + speaker prior (cosine >= 0.90, too loose)"
+7,probe_shift_minus_05.csv,probe,0.4877,run3_B - 0.5 (metric identification)
+8,probe_shift_minus_10.csv,probe,0.7219,run3_B - 1.0 (metric identification)
+9,probe_shift_minus_15.csv,probe,0.9946,run3_B - 1.5 (metric identification)
+10,probe_scale_half.csv,probe,0.4685,run3_B shrunk 2x around its mean (metric identification)
+11,blend_v1_noaffine.csv,blend,0.3636,"score-aware blend of 6 runs, no calibration"
+12,blend_v1.csv,blend,0.357,blend of 6 runs + affine calibration
+13,run4_model_only.csv,model,0.3752,"speaker+prompt folds, crops for every head"
+14,run4_smooth.csv,model,0.366,run 4 + smoothing
+15,run4_smooth_prior.csv,model,0.3621,run 4 + smoothing + speaker prior
+16,blend_v2.csv,blend,0.3515,blend of 9 runs
+17,single_whisper_v3_adapter__mlp.csv,single,0.3882,trained adapter head on Whisper-large-v3 layers 29-32
+18,single_whisper_v3_A__svr.csv,single,0.3933,RBF-SVR on Whisper-large-v3 layers 29-32
+19,single_wavlm_large_adapter__mlp.csv,single,0.4162,adapter head on WavLM-large layers 18-21
+20,single_wavlm_large_A__svr.csv,single,0.4296,RBF-SVR on WavLM-large layers 18-21
+21,single_w2vbert2_B__ridge.csv,single,0.5177,ridge on w2v-BERT 2.0 layers 16-19
+22,single_text_tfidf_ctc__ridge.csv,single,0.6316,ridge on TF-IDF of the CTC transcript
+23,single_text_llm4bctc__ridge.csv,single,0.4394,ridge on Qwen3-4B states of the CTC transcript
+24,single_text_llm__ridge.csv,single,0.5028,ridge on Qwen3-1.7B states of the Whisper transcript
+25,single_text_hand__lgbm.csv,single,0.5448,LightGBM on ~30 rate-based transcript features
+26,single_hubert_large_adapter__mlp.csv,single,0.446,adapter head on HuBERT-large layers 19-22
+27,blend_v3.csv,blend,0.3409,"blend of 19 files, free stretch"
+28,blend_v3_mild.csv,blend,0.3408,"blend of 19 files, stretch <= 1.10"
+29,blend_v3_mild_smooth.csv,blend,0.3357,blend v3 + smoothing
+30,run5_model_only.csv,model,0.3693,+ frozen RoBERTa/ELECTRA/DeBERTa text-encoder views
+31,run5_smooth.csv,model,0.3593,run 5 + smoothing
+32,run5_smooth_prior.csv,model,0.3549,run 5 + smoothing + speaker prior (best single model)
+33,single_text_enc_roberta_whisper__ridge.csv,single,0.4526,"ridge on RoBERTa-large states, Whisper transcript"
+34,single_text_enc_roberta_ctc__ridge.csv,single,0.4268,"ridge on RoBERTa-large states, CTC transcript"
+35,single_text_enc_electra_whisper__ridge.csv,single,0.422,"ridge on ELECTRA-large states, Whisper transcript"
+36,single_text_enc_electra_ctc__ridge.csv,single,0.4314,"ridge on ELECTRA-large states, CTC transcript"
+37,blend_v4.csv,blend,0.3308,"blend of 26 files, stretch <= 1.10"
+38,blend_v4_smooth.csv,blend,0.3262,FINAL: blend v4 + speaker smoothing

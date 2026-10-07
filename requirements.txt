@@ -1,0 +1,22 @@
+# Python 3.10. Install PyTorch with CUDA first (https://pytorch.org), e.g.
+#   pip install torch==2.7.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+lightgbm==4.7.0
+librosa==0.11.0
+soundfile==0.14.0
+transformers==5.2.0
+accelerate==1.15.0
+bitsandbytes==0.50.2
+sentencepiece==0.2.2
+tiktoken==0.14.0
+protobuf
+jiwer==4.0.0
+matplotlib==3.10.8
+seaborn==0.13.2
+tqdm==4.67.3
+nbformat==5.11.1
+nbconvert==7.17.1
+ipykernel==7.2.0

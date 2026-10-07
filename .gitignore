@@ -1,0 +1,11 @@
+# Competition data must never be published (rules: competition use only)
+shl-hiring-assessment-2026/
+Dataset_Final/
+*.wav
+# Derived features, caches, logs (all derived from the competition data)
+artifacts/
+__pycache__/
+.ipynb_checkpoints/
+*.log
+# Private notes
+INTERVIEW_PREP.md
